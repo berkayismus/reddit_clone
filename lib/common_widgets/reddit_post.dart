@@ -9,9 +9,18 @@ class RedditPost extends StatelessWidget {
     required this.postItem,
   });
 
-  String get thumbnailUrl =>
-      postItem?.data?.thumbnail ??
-      'https://cdn.pixabay.com/photo/2017/05/17/11/05/heart-2320561_1280.png';
+  String get thumbnailUrl {
+    try {
+      if (postItem?.data?.thumbnail?.contains('http') == true) {
+        return postItem?.data?.thumbnail ?? sampleThumbnailUrl;
+      } else {
+        return sampleThumbnailUrl;
+      }
+    } catch (e) {
+      return sampleThumbnailUrl;
+    }
+  }
+
   String get title => postItem?.data?.title ?? 'Title not found';
   String get description => postItem?.data?.selftext ?? 'Description not found';
 
@@ -34,7 +43,7 @@ class RedditPost extends StatelessWidget {
               margin: const EdgeInsets.only(right: 16.0),
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: NetworkImage(sampleThumbnailUrl),
+                  image: NetworkImage(thumbnailUrl),
                   fit: BoxFit.cover,
                 ),
                 borderRadius: BorderRadius.circular(8.0),
