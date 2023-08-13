@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:reddit_clone/common_widgets/message_widget.dart';
 import 'package:reddit_clone/common_widgets/reddit_post.dart';
 import 'package:reddit_clone/posts/bloc/posts_bloc.dart';
 
@@ -33,8 +34,8 @@ class PostsSliverList extends StatelessWidget {
           );
         } else if (state is PostsFailure) {
           return SliverToBoxAdapter(
-            child: Center(
-              child: Text('An error occured fetching posts ${state.exception}'),
+            child: MessageWidget(
+              message: 'An error occured fetching posts ${state.exception}',
             ),
           );
         } else {
