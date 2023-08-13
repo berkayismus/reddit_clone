@@ -4,21 +4,21 @@
 
 import 'dart:convert';
 
-PostsModel postsModelFromJson(String str) =>
-    PostsModel.fromJson(json.decode(str));
+PostModel postsModelFromJson(String str) =>
+    PostModel.fromJson(json.decode(str));
 
-String postsModelToJson(PostsModel data) => json.encode(data.toJson());
+String postsModelToJson(PostModel data) => json.encode(data.toJson());
 
-class PostsModel {
+class PostModel {
   final String? kind;
   final PostsModelData? data;
 
-  PostsModel({
+  PostModel({
     this.kind,
     this.data,
   });
 
-  factory PostsModel.fromJson(Map<String, dynamic> json) => PostsModel(
+  factory PostModel.fromJson(Map<String, dynamic> json) => PostModel(
         kind: json["kind"],
         data:
             json["data"] == null ? null : PostsModelData.fromJson(json["data"]),
