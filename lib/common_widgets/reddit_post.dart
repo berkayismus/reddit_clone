@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:reddit_clone/posts/models/post_model.dart';
 
 class RedditPost extends StatelessWidget {
-  final String title;
-  final String description;
-  final String thumbnailUrl;
+  final Child? postItem;
 
   const RedditPost({
     super.key,
-    required this.title,
-    required this.description,
-    required this.thumbnailUrl,
+    required this.postItem,
   });
+
+  String get thumbnailUrl =>
+      postItem?.data?.thumbnail ??
+      'https://cdn.pixabay.com/photo/2017/05/17/11/05/heart-2320561_1280.png';
+  String get title => postItem?.data?.title ?? 'Title not found';
+  String get description => postItem?.data?.selftext ?? 'Description not found';
+
+  String get sampleThumbnailUrl =>
+      'https://cdn.pixabay.com/photo/2017/05/17/11/05/heart-2320561_1280.png';
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +34,7 @@ class RedditPost extends StatelessWidget {
               margin: const EdgeInsets.only(right: 16.0),
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: NetworkImage(thumbnailUrl),
+                  image: NetworkImage(sampleThumbnailUrl),
                   fit: BoxFit.cover,
                 ),
                 borderRadius: BorderRadius.circular(8.0),

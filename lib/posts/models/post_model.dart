@@ -141,7 +141,7 @@ class ChildData {
   final dynamic contentCategories;
   final bool? isSelf;
   final dynamic modNote;
-  final int? created;
+  final double? created;
   final FlairType? linkFlairType;
   final int? wls;
   final dynamic removedByCategory;
@@ -194,7 +194,7 @@ class ChildData {
   final bool? stickied;
   final String? url;
   final int? subredditSubscribers;
-  final int? createdUtc;
+  final double? createdUtc;
   final int? numCrossposts;
   final Media? media;
   final bool? isVideo;

@@ -5,5 +5,5 @@ class ApiConstants {
     baseUrl: 'https://www.reddit.com/r/flutterdev/',
   );
 
-  static const String postsPath = 'top.json';
+  static const String postsPath = 'top.json?count=20';
 }
